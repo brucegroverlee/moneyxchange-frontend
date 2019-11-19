@@ -1,41 +1,50 @@
 import React from 'react';
+import { Button, Form, Segment } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
-import './login.scss';
-
-import strings from './login.strings.js';
-
-const Login = ({ language, login, error }) => {
-  const errorComponent = error === '' ? <React.Fragment/> : (<div className="page-login__error">Error: {error}</div>);
+const Login = ({ strings, login, email, password, handleOnChangeEmail, handleOnChangePassword, /* error */ }) => {
   return(
-    <div className="page-login">
-      <div className="page-login__main">
+    <div className="login-html">
+      <Form size='large'>
+        <Segment stacked>
+          <Form.Input 
+            fluid icon='user' 
+            iconPosition='left' 
+            placeholder={strings.emailPlaceholderInput}
+            value={email}
+            onChange={(event) => handleOnChangeEmail(event.target.value)}
+          />
+          <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder={strings.passwordPlaceholderInput}
+            value={password}
+            onChange={(event) => handleOnChangePassword(event.target.value)}
+            type='password'
+          />
 
-        <div className="page-login__main__left">
-          <div className="page-login__main__left__content">
-            <h4 className="page-login__main__left__content__title">{strings[language].left_title}</h4>
-            <hr className="page-login__main__left__content__hr"/>
-            <button className="sherpon-button-facebook" onClick={ () => login() }>Facebook</button>
-            {errorComponent}
-          </div>
-        </div>
-
-        <div className="page-login__main__right">
-          <h4 className="page-login__main__right__title">{strings[language].right_title}</h4>
-          <hr className="page-login__main__right__hr"/>
-          <div className="page-login__main__right__message">
-            {strings[language].right_message}
-          </div>
-        </div>
-        
-      </div>
+          <Button 
+            id="login-html__button" 
+            color='teal' 
+            fluid size='large'
+            onClick={() => login()}
+          >
+            {strings.loginButton}
+          </Button>
+        </Segment>
+      </Form>
     </div>
   );
 };
 
 Login.propTypes = {
-  language: PropTypes.string.isRequired,
+  strings: PropTypes.object.isRequired,
+  email: PropTypes.string.isRequired,
+  password: PropTypes.string.isRequired,
   login: PropTypes.func.isRequired,
+  handleOnChangeEmail: PropTypes.func.isRequired,
+  handleOnChangePassword: PropTypes.func.isRequired,
 };
 
 export default Login;
