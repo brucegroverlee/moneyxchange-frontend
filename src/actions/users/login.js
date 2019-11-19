@@ -14,7 +14,6 @@ export default function login() {
         type: FETCH_LOGIN 
       });
       const response = await api.users.login({email, password});
-      debugger
       if (response && response.token) {
         dispatch({ 
           type: FETCH_LOGIN_SUCCESS,

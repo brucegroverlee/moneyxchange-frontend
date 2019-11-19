@@ -10,6 +10,7 @@ import history from '@utils/history';
 import reducer from '@reducers';
 
 import SpinnerPage from '@components/spinner/spinnerPage';
+import ErrorBoundary from '@components/errorBoundary';
 
 import LoginPage from '@pages/login/login.container';
 import Logout from './logout.container';
@@ -49,7 +50,9 @@ const App = () => {
           <Route render={() => (
             <CheckSessionContainer>
               <Suspense fallback={<SpinnerPage/>}>
-                <HomePage/>
+                <ErrorBoundary>
+                  <HomePage/>
+                </ErrorBoundary>
               </Suspense>
             </CheckSessionContainer>
           )}/>

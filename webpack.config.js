@@ -16,6 +16,7 @@ module.exports = (env) => {
       filename: '[name].bundle.[hash:4].js',
       chunkFilename: '[name].bundle.[hash:4].js',
     },
+    devtool: "#eval-source-map",
     module: {
       rules:[{
         test: /\.(js|jsx)$/,
@@ -92,7 +93,10 @@ module.exports = (env) => {
         silent: false, // hide any errors
         defaults: false // load '.env.defaults' as the default values if empty.
       }),
-      new webpack.EnvironmentPlugin({})
+      new webpack.EnvironmentPlugin({}),
+      new webpack.LoaderOptionsPlugin({
+        debug: true
+      }),
     ],
     devServer: {
       port: 4000,

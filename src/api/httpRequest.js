@@ -39,6 +39,10 @@ export async function post(payload) {
     return axios({
       method: 'post',
       url: `${process.env.API_ENDPOINT}${payload.path}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${payload.token}`
+      },
       data: payload.data,
     });
   } catch (error) {

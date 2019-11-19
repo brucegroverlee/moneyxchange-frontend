@@ -1,41 +1,57 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './login.scss';
+import ExchangeCard from '@components/home/exchangeCard';
+import ExchangesListCard from '@components/home/exchangesListCard';
 
-import strings from './home.strings.js';
-
-const Login = ({ language, login, error }) => {
-  const errorComponent = error === '' ? <React.Fragment/> : (<div className="page-login__error">Error: {error}</div>);
+const Home = (props) => {
+  const { 
+    strings,
+    currencies,
+    exchanges,
+    currencyCodeBase,
+    currencyValueBase,
+    currencyCodeDestination,
+    currencyValueDestination,
+    handleOnChangeCurrencyCodeBase,
+    handleOnChangeCurrencyValueBase,
+    handleOnChangeCurrencyCodeDestination,
+    handleOnClickConvert,
+  } = props;
   return(
-    <div className="page-login">
-      <div className="page-login__main">
-
-        <div className="page-login__main__left">
-          <div className="page-login__main__left__content">
-            <h4 className="page-login__main__left__content__title">{strings[language].left_title}</h4>
-            <hr className="page-login__main__left__content__hr"/>
-            <button className="sherpon-button-facebook" onClick={ () => login() }>Facebook</button>
-            {errorComponent}
-          </div>
-        </div>
-
-        <div className="page-login__main__right">
-          <h4 className="page-login__main__right__title">{strings[language].right_title}</h4>
-          <hr className="page-login__main__right__hr"/>
-          <div className="page-login__main__right__message">
-            {strings[language].right_message}
-          </div>
-        </div>
-        
-      </div>
+    <div className="home-html">
+      {strings.title}
+      <ExchangeCard
+        strings={strings.ExchangeCar}
+        currencies={currencies}
+        currencyCodeBase={currencyCodeBase}
+        currencyValueBase={currencyValueBase}
+        currencyCodeDestination={currencyCodeDestination}
+        currencyValueDestination={currencyValueDestination}
+        handleOnChangeCurrencyCodeBase={handleOnChangeCurrencyCodeBase}
+        handleOnChangeCurrencyValueBase={handleOnChangeCurrencyValueBase}
+        handleOnChangeCurrencyCodeDestination={handleOnChangeCurrencyCodeDestination}
+        handleOnClickConvert={handleOnClickConvert}
+      />
+      <ExchangesListCard 
+        exchanges={exchanges}
+      />
     </div>
   );
 };
 
-Login.propTypes = {
-  language: PropTypes.string.isRequired,
-  login: PropTypes.func.isRequired,
+Home.propTypes = {
+  strings: PropTypes.object.isRequired,
+  currencies: PropTypes.array.isRequired,
+  exchanges: PropTypes.array.isRequired,
+  currencyCodeBase: PropTypes.string.isRequired,
+  currencyValueBase: PropTypes.any.isRequired,
+  currencyCodeDestination: PropTypes.string.isRequired,
+  currencyValueDestination: PropTypes.any.isRequired,
+  handleOnChangeCurrencyCodeBase: PropTypes.func.isRequired,
+  handleOnChangeCurrencyValueBase: PropTypes.func.isRequired,
+  handleOnChangeCurrencyCodeDestination: PropTypes.func.isRequired,
+  handleOnClickConvert: PropTypes.func.isRequired,
 };
 
-export default Login;
+export default Home;
