@@ -1,0 +1,33 @@
+@mixin col{
+  padding: 3rem;
+}
+
+.home-html {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: auto;
+  grid-row-gap: 1rem;
+  grid-template-areas: 
+    "card" 
+    "list";
+
+  @media (min-width: 750px) {
+    align-items: center;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 300px;
+    grid-column-gap: 2rem;
+    grid-template-areas: 
+      "card list";
+  }
+
+  &__card {
+    @include col;
+    grid-area: card;
+  }
+
+  &__list {
+    @include col;
+    grid-area: list;
+  }
+}

@@ -20,22 +20,25 @@ const Home = (props) => {
   } = props;
   return(
     <div className="home-html">
-      {strings.title}
-      <ExchangeCard
-        strings={strings.ExchangeCar}
-        currencies={currencies}
-        currencyCodeBase={currencyCodeBase}
-        currencyValueBase={currencyValueBase}
-        currencyCodeDestination={currencyCodeDestination}
-        currencyValueDestination={currencyValueDestination}
-        handleOnChangeCurrencyCodeBase={handleOnChangeCurrencyCodeBase}
-        handleOnChangeCurrencyValueBase={handleOnChangeCurrencyValueBase}
-        handleOnChangeCurrencyCodeDestination={handleOnChangeCurrencyCodeDestination}
-        handleOnClickConvert={handleOnClickConvert}
-      />
-      <ExchangesListCard 
-        exchanges={exchanges}
-      />
+      <div className="home-html__card">
+        <ExchangeCard
+          strings={strings.ExchangeCar}
+          currencies={currencies}
+          currencyCodeBase={currencyCodeBase}
+          currencyValueBase={currencyValueBase}
+          currencyCodeDestination={currencyCodeDestination}
+          currencyValueDestination={currencyValueDestination}
+          handleOnChangeCurrencyCodeBase={handleOnChangeCurrencyCodeBase}
+          handleOnChangeCurrencyValueBase={handleOnChangeCurrencyValueBase}
+          handleOnChangeCurrencyCodeDestination={handleOnChangeCurrencyCodeDestination}
+          handleOnClickConvert={handleOnClickConvert}
+        />
+      </div>
+      <div className="home-html__list">
+        <ExchangesListCard 
+          exchanges={exchanges}
+        />
+      </div>
     </div>
   );
 };

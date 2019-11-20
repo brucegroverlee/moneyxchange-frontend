@@ -9,6 +9,7 @@ import { Router as BrowserRouter, Route, Switch /*, withRouter */ } from 'react-
 import history from '@utils/history';
 import reducer from '@reducers';
 
+import Layout from '@components/layout/layout';
 import SpinnerPage from '@components/spinner/spinnerPage';
 import ErrorBoundary from '@components/errorBoundary';
 
@@ -50,9 +51,11 @@ const App = () => {
           <Route render={() => (
             <CheckSessionContainer>
               <Suspense fallback={<SpinnerPage/>}>
-                <ErrorBoundary>
-                  <HomePage/>
-                </ErrorBoundary>
+                <Layout>
+                  <ErrorBoundary>
+                    <HomePage/>
+                  </ErrorBoundary>
+                </Layout>
               </Suspense>
             </CheckSessionContainer>
           )}/>

@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import getFormat from './function/getFormat';
+
+import './exchangesListCard.scss';
+
 const ExchangesListCard = ({exchanges}) => {
   const rows = exchanges.map((exchange) => {
     return(
       <div key={exchange.pair}>
-        {exchange.pair}: {exchange.rate}
+        {exchange.pair}: {getFormat(exchange.rate)}
       </div>
     );
   });

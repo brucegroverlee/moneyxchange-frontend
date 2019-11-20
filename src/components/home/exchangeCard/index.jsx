@@ -10,6 +10,8 @@ import getBaseCurrencies from './functions/getBaseCurrencies';
 import getDestinantionCurrencies from './functions/getDestinantionCurrencies';
 import transformCurrencies from './functions/transformCurrencies';
 
+import './exchangeCard.scss';
+
 const ExchangeCard = (props) => {
   const { 
     strings,
@@ -36,7 +38,7 @@ const ExchangeCard = (props) => {
           handleOnChangeCurrencyValue={handleOnChangeCurrencyValueBase}
           readOnly={false}
         >
-          <Button onClick={() => handleOnClickConvert()} >{strings.exchangeButton}</Button>
+          <Button style={{marginTop: '1rem'}} onClick={() => handleOnClickConvert()} >{strings.exchangeButton}</Button>
         </CurrencyCard>
       </div>
 

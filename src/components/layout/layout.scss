@@ -1,0 +1,34 @@
+.layout-container {
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  grid-template-columns: auto;
+  grid-template-areas: 
+    "navbar" 
+    "title" 
+    "content" 
+    "footer";
+
+  &__bg {
+    background: linear-gradient(43.51deg, #3908AB 0%, #6EB7FE 100%);
+  }
+
+  &__navbar {
+    grid-area: navbar;
+    min-height: 50px;
+  }
+
+  &__title {
+    grid-area: title;
+    min-height: 50px;
+  }
+
+  &__content {
+    grid-area: content;
+  }
+
+  &__footer {
+    grid-area: footer;
+    min-height: 100px;
+  }
+}
