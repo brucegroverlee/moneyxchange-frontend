@@ -1,3 +1,4 @@
+import { initCurrencies, setCurrencies, cleanCurrencies } from '@utils/session';
 export const FETCH_CURRENCIES_SUCCESS = 'FETCH_CURRENCIES_SUCCESS';
 
 /**
@@ -16,9 +17,12 @@ const initialState = [];
 /**
  * @function currenciesReducer
  */
-export default (state = initialState, action) => {
+export default (state = initCurrencies(initialState), action) => {
   switch (action.type) {
     case FETCH_CURRENCIES_SUCCESS:
+      setCurrencies([
+        ...action.currencies,
+      ]);
       return [
         ...action.currencies,
       ];
