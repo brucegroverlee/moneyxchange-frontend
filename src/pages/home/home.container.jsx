@@ -13,6 +13,8 @@ import './home.scss';
 import HomeHtml from './home.html.jsx';
 import homeStrings from './home.strings.js';
 
+const REFRESH_EXCHANGES = 10 * 60 * 1000;
+
 class HomeContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +24,10 @@ class HomeContainer extends React.Component {
     const { getExchanges, getCurrencies } = this.props;
     getExchanges();
     getCurrencies();
+
+    setInterval((getExchanges) => {
+      getExchanges();
+    }, REFRESH_EXCHANGES, getExchanges);
   }
 
   render() {
